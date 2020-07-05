@@ -16,7 +16,19 @@ export default styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: profileCardColor,
         width: 300,
-        height: 400
+        height: 400,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {
+                    height: 10
+                },
+                shadowOpacity: 1
+            },
+            android: {
+                elevation: 15
+            }
+        })
     },
     cardImageContainer: {
         marginTop: 30,
@@ -27,7 +39,21 @@ export default styles = StyleSheet.create({
         borderColor: 'black',
         width: 120,
         height: 120,
-        borderRadius: 60
+        borderRadius: 60,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {
+                    height: 10
+                },
+                shadowOpacity: 1
+            },
+            android: {
+                borderWidth: 3,
+                borderColor: 'black',
+                elevation: 15
+            }
+        })
     },
     cardImage: {
         width: 60,
@@ -62,5 +88,8 @@ export default styles = StyleSheet.create({
         })
         //等价于
         //fontFamily: Platform.OS === 'ios' ? 'American Typewriter' : 'monospace'
+    },
+    cardThumbnail: {
+        transform: [{ scale: 0.2 }]
     }
 })
