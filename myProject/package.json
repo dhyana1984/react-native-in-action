@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "immutability-helper": "^3.1.1",
     "react": "16.11.0",
     "react-native": "0.62.2"
   },
