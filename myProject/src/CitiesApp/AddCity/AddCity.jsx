@@ -1,8 +1,10 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import uuidV4 from 'uuidv4'
 import { colors } from '../theme'
 import styles from './AddCity.styles'
+import CityContext from '../components/Context';
+
 
 export default class AddCity extends React.Component {
 
@@ -19,7 +21,7 @@ export default class AddCity extends React.Component {
         this.setState({ [key]: value })
     }
 
-    submit = () => {
+    submit = (addCity) => {
         const { city, country } = this.state
         if (this.state.city === '' || this.state.country === '') {
             alert('Please complete form')
@@ -31,9 +33,7 @@ export default class AddCity extends React.Component {
             id: uuidV4,
             locations: []
         }
-        const { addCity, cities } = this.props.route.params.screenProps
         addCity(cityItem)
-        DeviceEventEmitter.emit('AddCity', cityItem);
         this.setState({
             city: '',
             country: '',
@@ -58,11 +58,15 @@ export default class AddCity extends React.Component {
                     style={styles.input}
                     value={this.state.country}
                 />
-                <TouchableOpacity onPress={this.submit}>
-                    <View style={styles.button}>
-                        <Text style={styles.buttonText}>Add City</Text>
-                    </View>
-                </TouchableOpacity>
+                <CityContext.Consumer>
+                    {context =>
+                        <TouchableOpacity onPress={() => this.submit(context.addCity)}>
+                            <View style={styles.button}>
+                                <Text style={styles.buttonText}>Add City</Text>
+                            </View>
+                        </TouchableOpacity>
+                    }
+                </CityContext.Consumer>
             </View>
         )
     }
