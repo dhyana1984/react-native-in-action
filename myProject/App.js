@@ -7,7 +7,7 @@ import Loading from './src/Animation/Loading'
 import Paralle from './src/Animation/Parallel'
 import Squence from './src/Animation/Squence'
 import Stagger from './src/Animation/Stagger'
-
+import Books from './src/BooksApp'
 
 console.disableYellowBox = true
 const App: () => React$Node = () => {
@@ -20,7 +20,8 @@ const App: () => React$Node = () => {
     // <Loading />
     // <Paralle />
     // <Squence />
-    <Stagger />
+    // <Stagger />
+    <Books />
   )
 }
 
