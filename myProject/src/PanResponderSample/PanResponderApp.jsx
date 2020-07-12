@@ -16,10 +16,10 @@ export default class PanResponderApp extends React.Component {
                 y: (height / 2) - 100
             }
         }
-
     }
 
-    componentDidMount() {
+    //需要在willMount里面设置panHandlers
+    componentWillMount() {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onPanResponderMove: this._handlePanResponderMove,
@@ -51,7 +51,7 @@ export default class PanResponderApp extends React.Component {
                     x:{this.state.position.x} y:{this.state.position.y}
                 </Text>
                 <View
-                   {...this._panResponder.panHandlers} 
+                    {...this._panResponder.panHandlers}
                     style={[styles.box, {
                         marginLeft: this.state.position.x,
                         marginTop: this.state.position.y
