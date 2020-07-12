@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import uuidV4 from 'uuidv4'
+import uuid from 'react-native-uuid'
 import { colors } from '../theme'
 import styles from './AddCity.styles'
 import CityContext from '../components/Context';
@@ -30,7 +30,7 @@ export default class AddCity extends React.Component {
         const cityItem = {
             city,
             country,
-            id: uuidV4,
+            id: uuid.v4(),
             locations: []
         }
         addCity(cityItem)

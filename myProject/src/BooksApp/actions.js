@@ -1,6 +1,8 @@
 export const ADD_BOOK = 'ADD_BOOK'
 export const REMOVE_BOOK = 'REMOVE_BOOK'
-import { uuid } from 'uuidv4'
+export const EDIT_BOOK = 'EDIT_BOOK'
+
+import uuid from 'react-native-uuid'
 
 //action就是一些返回对象的函数
 const addBook = book => {
@@ -8,7 +10,7 @@ const addBook = book => {
         type: ADD_BOOK,
         book: {
             ...book,
-            id: uuid()
+            id: uuid.v4()
         }
     }
 }
@@ -20,4 +22,11 @@ const removeBook = book => {
     }
 }
 
-export { addBook, removeBook }
+const editBook = book => {
+    return {
+        type: EDIT_BOOK,
+        book
+    }
+}
+
+export { addBook, removeBook, editBook }

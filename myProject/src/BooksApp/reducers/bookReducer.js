@@ -1,12 +1,12 @@
-import { ADD_BOOK, REMOVE_BOOK } from '../actions'
-import { uuid } from 'uuidv4'
+import { ADD_BOOK, REMOVE_BOOK, EDIT_BOOK } from '../actions'
+import uuid from 'react-native-uuid'
 
 //初始state
 const initialState = {
     books: [{
         name: 'East of Eden',
         author: 'John Steinbeck',
-        id: uuid()
+        id: uuid.v4()
     }]
 }
 
@@ -35,6 +35,12 @@ export default bookReducer = (state = initialState, action) => {
                     ...state.books.slice(index + 1)
                 ]
             }
+        case EDIT_BOOK:
+            const book = state.books.find(t => t.id === action.book.id)
+            book.name = action.book.name
+            book.author = action.book.author
+            return state
+            
         //如果action语句都不匹配，就返回原始state
         default:
             return state
