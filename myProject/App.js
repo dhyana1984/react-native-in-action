@@ -8,6 +8,7 @@ import Paralle from './src/Animation/Parallel'
 import Squence from './src/Animation/Squence'
 import Stagger from './src/Animation/Stagger'
 import Books from './src/BooksApp'
+import PanResponderApp from './src/PanResponderSample/PanResponderApp'
 
 console.disableYellowBox = true
 const App: () => React$Node = () => {
@@ -21,7 +22,8 @@ const App: () => React$Node = () => {
     // <Paralle />
     // <Squence />
     // <Stagger />
-    <Books />
+    // <Books />
+    <PanResponderApp />
   )
 }
 
