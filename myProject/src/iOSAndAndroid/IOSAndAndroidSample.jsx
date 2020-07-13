@@ -14,6 +14,7 @@ export default class IOSAndAndroidSample extends React.Component {
                         width:100,
                         marginBottom:200,
                         alignSelf:'center',
+                        //通过Platform.select在不同的plaform下解构配置属性
                         ...Platform.select({
                             ios:{
                                 backgroundColor:'green'
